@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="greeting">
+        Settings
+    </h1>
+
+    <!-- System Name -->
+
+    <div class="card">
+
+        <h2>System name</h2>
+
+        <input
+            type="text"
+            id="systemName"
+            placeholder="Enter system name">
+
+        
+    </div>
+    <div class="card">
+        <h2>Avatar</h2>
+        <div style="display: flex;">
+            
+            <img src="" alt="avatar" id = "avatar_img" style="width:20vw">
+    <button onclick="delete_avatar()">delete</button>
+    <button onclick="download_avatar()">download</button>
+                <input type="file" id="file_add">
+                <label for="file_add" class="label_file">Add file</label>
+  
+        </div>
+        
+        
+        
+    </div>
+
+    <!-- Theme -->
+
+    <div class="card">
+
+        <h2>Theme</h2>
+
+        <select id="themeSelect">
+
+            <option value="0">
+                ☀ Light
+            </option>
+
+            <option value="1">
+                🌙 Dark
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- Font -->
+
+    <div class="card">
+
+        <h2>Font</h2>
+
+        <select id="fontSelect">
+
+            <option value="Segoe UI">
+                Segoe UI
+            </option>
+
+            <option value="Arial">
+                Arial
+            </option>
+
+            <option value="Verdana">
+                Verdana
+            </option>
+
+            <option value="Georgia">
+                Georgia
+            </option>
+
+            <option value="Trebuchet MS">
+                Trebuchet MS
+            </option>
+
+        </select>
+
+    </div>
+    
+    <button onclick="edit_info()">Save settings</button>
+
+    <button onclick="log_out()">Log out</button>
+    <button class="btn" id="back" onclick="location.href='..'">back</button>
+
+</div>
+
+<script src="settings.js"></script>
+
+</body>
+
+</html>

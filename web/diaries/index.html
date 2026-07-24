@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diaries</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+    <h1 class="header_page to_center_width" >Diaries <button popovertarget="adding_popover" onclick="get_alters()" class="btn_plus">+</button></h1>
+            
+    <div id="adding_popover" class="menu_popup" style="display: none;" popover>
+        <div class="to_align_right">
+            <button class="close_button" onclick="document.getElementById('adding_popover').style.display = 'none'">&#10005;</button>
+            
+        </div>
+    <div id="hm_list" class="div_popup">
+
+    </div>
+        <p id="no_one_hm" class="p_noone to_center_width">Everyone has a diary</p>
+
+    </div>
+        
+    
+    <div class="to_center_width">
+    <div id="diaries_list" class="menu">
+
+    </div>
+    </div>
+   
+    <p id="no_one" class="p_noone to_center_width">You don't have any diaries yet! Press the + button to add one</p>
+   
+    <button class="btn" id="back" onclick="location.href='..'">back</button>
+    <script src='diaries.js'></script> 
+
+
+</body>
+
+</html>

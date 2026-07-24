@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log in</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body class="for_center">
+    <!-- <div class="for_center"> -->
+    <div class="back_colour login card">
+        <div class="main_colour card w_padding w_top"> 
+        <span class="login_icons">✉</span><input type="text" class="input_login" id="UserEmail" placeholder="Email*"><br>
+        <span class="login_icons">🔒</span><input type="text" class="input_login" id="UserPassword" placeholder="Password*"><br>
+        <div id="usn" style="display: none;">
+            <span class="login_icons">👥</span><input type="text" class="input_login" id="UserSystemName" placeholder="System's name"><br>
+        </div>
+        <a id="register" onclick="javascript: reg_pressed()">Don't have an account yet?</a>
+        </div>
+
+        <button id="btn_submit" onclick="submit()">LOG IN</button>
+    </div>
+    <!-- </div> -->
+
+
+    <script src="login.js"></script> 
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="title">Diary entry</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../../style.css">
+
+</head>
+
+<body class="diary">
+    <h1 id="name" class="header_page to_center_width diary_text"></h1>
+    <div id="entry" style="margin-top: 10px; " class="diary_entry diary_entry_open">
+        <div id="header_entry" class="entry_header">
+            <input id="name_of_entry" placeholder="Enter the name of entry">
+            <p id="date_of_entry" style="display: none;"></p>
+        </div>
+        <div id="body_entry" class="entry_body_text">
+
+            <div id="editor" class="description_entry_open">
+            </div>
+
+            <div class="for_files">
+                 <div id="photos" style="display: flex;">
+                
+                </div>
+
+                <input type="file" id="file_add">
+                <label for="file_add" class="label_file">Add file</label>
+
+            </div>
+        </div>
+    </div>
+        <div class="entry_buttons_div">
+        <button class="btn diary_btn" id="back" onclick="location.href='..'">back</button>
+        <button class="btn diary_btn" id="edit_entry" onclick="edit_entry_adding()">add entry</button>
+
+    </div>
+    
+    <!-- <button id="back" onclick="location.href='add_entry.html'">+ add new entry</button> -->
+    <script src="../../../moment.js"></script>
+    <script src='entry.js'></script> 
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>add_entry()</script>
+    
+    <!-- Initialize Quill editor -->
+<script>
+  const quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
+</body>
+
+</html>

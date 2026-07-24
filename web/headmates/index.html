@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Headmates</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+    <div id="header_diary_div" >
+    <div class="flex_cont ">
+    <div class="flex_cont center">
+            <h1 class="header_page shrink ">Headmates</h1>
+            <button id="add_headmate" onclick="location.href='add_headmate.html'" class="btn_plus">+</button>
+        </div>
+
+   </div>
+
+
+    <div class="flex_cont ">
+    <div class="flex_cont center">
+            <input id="query" placeholder="Search of headmates">
+    <button id="submit" onclick="get_alters()">OK</button><br>
+
+    </div>
+
+   </div>
+    </div>
+    <!-- <h1>Headmates</h1>
+    <input id="query" placeholder="Search of headmates">
+    <button id="submit" onclick="get_alters()">OK</button><br>
+    <button >+ add new headmate</button> -->
+    <div id="hm_list" style="width: 100%;">
+        
+
+    </div>
+    <button class="btn" id="back" onclick="location.href='..'">back</button>
+    <script src='headmates.js'></script> 
+
+
+</body>
+
+</html>

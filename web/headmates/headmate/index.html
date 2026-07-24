@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="title">Headmate</title>
+
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+
+<body class="centered_items to_center_width">
+    <div class="flex_column">
+    <input id="name", style="font-size:xx-large;"0><br>
+    <img src="" id="avatar" style="width: 40%;"><br>
+    <button onclick="delete_avatar()">delete</button>
+    <button onclick="download_avatar()">download</button>
+                <input type="file" id="file_add">
+                <label for="file_add" class="label_file">Add file</label>
+    
+    <input type="color" id="hm_colour" style="border-width: 0px; height: 50px; width: 100%;"></input><br>
+    
+    <p>pronouns: </p> <input id="pronouns"><br>
+    <p>age: </p> <input id="age"><br>
+    <p>role: </p> <input id="role"><br>
+    <p>description: </p> <textarea id="description"></textarea>
+
+    
+    
+    <button id="btn_add_diary" style="display: none;" onclick="add_diary()">+ add new diary</button>
+    <button id="btn_diary" style="display: block;" onclick="location.href='../../diaries/diary'">open diary</button>
+    <button id="fronting" onclick="change_front()" style="background-color: pink;">add to the front</button><br>
+    
+    <button id="save" onclick="edit_alter()"><h1>Save</h1></button>
+    <button id="delete" onclick="delete_alter()"><h1>Delete</h1></button>
+
+<button class="btn" id="back" onclick="location.href='..'">back</button>
+
+    <script src='headmate.js'></script> 
+    <script>existing_headmate()</script>
+
+</div>
+</body>
+
+</html>

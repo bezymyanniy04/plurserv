@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="title">diary</title>
+
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+
+<body class="diary" id="diary_body">
+    <div id="header_diary_div" class="header_fixed_diary">
+    <div class="flex_cont ">
+    
+        <div class="flex_cont center">
+            <h1 id="name" class="header_page  diary_text shrink "></h1>
+            <button id="add_entry" onclick="location.href='entry/add_entry.html'" class="btn_plus diary_text">+</button>
+        </div>
+   <button popovertarget="adding_popover_settings" onclick="document.getElementById('adding_popover_settings').style.display = 'block';" class="margin_thing cog" >&#9881;</button> 
+   </div>
+    </div>
+
+    <div id="adding_popover_settings" class="menu_popup diary_settings" style="display: none;" popover>
+        <div class="to_align_right">
+            <button class="close_button" onclick="document.getElementById('adding_popover_settings').style.display = 'none'">&#10005;</button>
+        </div>
+        <div id="settings" class=" menu_settings_inner" >
+        <p class="menu_settings_text">background color</p><input class="color_picker" type="color" id="bg_colour" style="height: 60px;"><br>
+        <p class="menu_settings_text">second background color</p><input class="color_picker" type="color" id="bg_colour2" style="height: 60px;"><br> 
+        <p class="menu_settings_text">main color</p><input class="color_picker" type="color" id="block_colour" style="height: 60px;"><br>
+        <p class="menu_settings_text">text color</p><input class="color_picker" type="color" id="text_colour" style="height: 60px;"><br>
+        <p class="menu_settings_text">font</p>
+        <select id="font">
+
+            <option value="Segoe UI">
+                Segoe UI
+            </option>
+
+            <option value="Arial">
+                Arial
+            </option>
+
+            <option value="Verdana">
+                Verdana
+            </option>
+
+            <option value="Georgia">
+                Georgia
+            </option>
+
+            <option value="Trebuchet MS">
+                Trebuchet MS
+            </option>
+
+        </select>
+        <button class="btn" onclick="edit_diary()">Save</button>
+        <button class="btn" popovertarget="confirmation" onclick="document.getElementById('confirmation').style.display = 'block';">Delete the diary</button>
+        <div id="confirmation" class="menu_popup diary_settings confirmation" popover style="display: none;">
+            <p>Are you sure?</p>
+            <button class="btn" onclick="document.getElementById('confirmation').style.display = 'none';">No</button>
+            <button class="btn" onclick="delete_diary()">Yes</button>
+        </div>
+        </div>
+
+    </div>
+
+    
+   
+    
+    <div class="to_center_width">
+        <div id="entries">
+        </div>
+    </div>
+        <p id="no_one" class="p_noone to_center_width w_top_margin">You don't have any entries yet! Press the + button to add one</p>
+
+    <button class="btn" id="back" onclick="location.href='..'">back</button>
+
+    <!-- <button id="back" onclick="location.href='add_entry.html'">+ add new entry</button> -->
+    <script src="../../moment.js"></script>
+    <script src='diary.js'></script> 
+</body>
+
+</html>

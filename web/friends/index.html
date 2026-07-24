@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Friends</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+   <h1>Friends</h1><button onclick="copy_id()"><span id="user_id">id:</span></button>
+    <button onclick="friends()">Your friends</button>
+    <div id="friends_list" style="background-color: magenta;">
+        
+    </div>
+    <button onclick="requests()">Your sent requests</button>
+    <div id="sent" style="background-color: yellow;">
+        <button onclick="document.getElementById('add_friend_div').style.display = 'block'">+add friend</button>
+        <div class="card" id='add_friend_div' style="display: none;">
+            <input id="friend_id" placeholder="Enter friend's id">
+            <button onclick="add_friend()">ok</button>
+        </div>
+        <div id="sent_list">
+
+        </div>
+    </div>
+    <button onclick="pending()">Your pending requests</button>
+    <div id="pending_list" style="background-color: cyan;">
+
+    </div>
+    <button class="btn" id="back" onclick="location.href='..'">back</button>
+    <script src='friends.js'></script> 
+
+
+</body>
+
+</html>
