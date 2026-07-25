@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"math"
 	"net/http"
 	"os"
@@ -2286,17 +2287,17 @@ func main() {
 
 	// dbURL := os.Getenv("DB_URL")
 	if dbURL == "" {
-		fmt.Println("DB_URL environment variable is not set")
+		log.Fatal("DB_URL environment variable is not set")
 	}
 
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
-		fmt.Println("Failed to open database: %v", err)
+		log.Fatalf("Failed to open database: %v", err)
 	}
 
 	// Обязательно проверь подключение
 	if err = db.Ping(); err != nil {
-		fmt.Println("Failed to ping database: %v", err)
+		log.Fatalf("Failed to ping database: %v", err)
 	}
 	// db, err := sql.Open("postgres", dbURL)
 	// if err != nil {
