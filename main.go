@@ -2280,7 +2280,7 @@ func (cfg *apiConfig) revoke_token(w http.ResponseWriter, r *http.Request) {
 func main() {
 	godotenv.Load()
 	dbURL := os.Getenv("DB_URL")
-	log.Println(dbURL)
+	log.Fatalf("%v", dbURL)
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
 		fmt.Printf("DB not opening")
