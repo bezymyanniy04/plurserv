@@ -37,6 +37,7 @@ type apiConfig struct {
 	db        *database.Queries
 	platform  string
 	JWTSecret string
+	dbc       *sql.DB
 }
 
 type UserPass struct {
@@ -255,12 +256,12 @@ func (cfg *apiConfig) post_user(w http.ResponseWriter, r *http.Request) {
 
 	userdb, err := cfg.db.CreateUser(r.Context(), database.CreateUserParams{Email: param.Email, HashedPassword: hashed_password, Avatar: param.Avatar, SystemName: param.SystemName, Theme: param.Theme, Font: param.Font})
 	if err != nil {
-		err_mes("Something went wrong", 400, w)
+		err_mes("Something went wrong db1", 400, w)
 		return
 	}
 	_, err = cfg.db.NewForNewbies(r.Context(), database.NewForNewbiesParams{UserID: userdb.ID, Text: default_for_newbies})
 	if err != nil {
-		err_mes("Something went wrong with db", 400, w)
+		err_mes("Something went wrong with db2", 400, w)
 		return
 	}
 
@@ -2223,6 +2224,10 @@ func (cfg *apiConfig) login(w http.ResponseWriter, r *http.Request) {
 }
 
 func (cfg *apiConfig) refresh(w http.ResponseWriter, r *http.Request) {
+	// if err := cfg.dbc.Ping(); err != nil {
+	// 	fmt.Printf("Database is not reachable: %v", err)
+	// }
+	// fmt.Println("Database connection pool configured and ping successful.")
 	token, err := auth.GetBearerToken(r.Header)
 	if err != nil {
 		err_mes("No authorization", 400, w)
@@ -2278,10 +2283,19 @@ func main() {
 	if err != nil {
 		fmt.Printf("DB not opening")
 	}
+	// db.SetMaxOpenConns(5)                   // не больше 3 одновременных соединений
+	// db.SetMaxIdleConns(0)                   // не держать бездействующих соединений
+	// db.SetConnMaxLifetime(1 * time.Minute)  // жить не дольше 1 минуты
+	// db.SetConnMaxIdleTime(30 * time.Second) // бездействовать не дольше 30 секунд
+	// if err := db.Ping(); err != nil {
+	// 	fmt.Printf("Database is not reachable: %v", err)
+	// }
+	// fmt.Println("Database connection pool configured and ping successful.")
 	dbQueries := database.New(db)
 	apiCfg := apiConfig{}
 	apiCfg.platform = os.Getenv("PLATFORM")
 	apiCfg.db = dbQueries
+	apiCfg.dbc = db
 	jwtSecret := os.Getenv("JWT_SECRET")
 	apiCfg.JWTSecret = jwtSecret
 
