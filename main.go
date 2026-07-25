@@ -2307,7 +2307,7 @@ func main() {
 	}
 
 	//app
-	mux.Handle("/", http.FileServer(http.Dir("./web")))
+	mux.Handle("/app/", apiCfg.middlewareMetricsInc(http.StripPrefix("/app", http.FileServer(http.Dir("./web")))))
 
 	//readiness
 	mux.HandleFunc("GET /api/healthz", Readiness)
