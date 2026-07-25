@@ -18,7 +18,6 @@ import (
 	"github.com/bezymyanniy04/plurserv/internal/auth"
 	"github.com/bezymyanniy04/plurserv/internal/database"
 	"github.com/google/uuid"
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -2277,7 +2276,7 @@ func (cfg *apiConfig) revoke_token(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	godotenv.Load()
+	// godotenv.Load()
 	dbURL := os.Getenv("DB_URL")
 	fmt.Println(dbURL)
 	db, err := sql.Open("postgres", dbURL)
