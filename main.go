@@ -2279,18 +2279,29 @@ func (cfg *apiConfig) revoke_token(w http.ResponseWriter, r *http.Request) {
 func main() {
 	godotenv.Load()
 	dbURL := os.Getenv("DB_URL")
+	// Загружаем .env только для локальной разработки
+	// if os.Getenv("PLATFORM") != "production" {
+	// godotenv.Load()
+	// }
+
+	// dbURL := os.Getenv("DB_URL")
+	if dbURL == "" {
+		fmt.Println("DB_URL environment variable is not set")
+	}
+
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
-		fmt.Printf("DB not opening")
+		fmt.Println("Failed to open database: %v", err)
 	}
-	// db.SetMaxOpenConns(5)                   // не больше 3 одновременных соединений
-	// db.SetMaxIdleConns(0)                   // не держать бездействующих соединений
-	// db.SetConnMaxLifetime(1 * time.Minute)  // жить не дольше 1 минуты
-	// db.SetConnMaxIdleTime(30 * time.Second) // бездействовать не дольше 30 секунд
-	// if err := db.Ping(); err != nil {
-	// 	fmt.Printf("Database is not reachable: %v", err)
+
+	// Обязательно проверь подключение
+	if err = db.Ping(); err != nil {
+		fmt.Println("Failed to ping database: %v", err)
+	}
+	// db, err := sql.Open("postgres", dbURL)
+	// if err != nil {
+	// 	fmt.Printf("DB not opening")
 	// }
-	// fmt.Println("Database connection pool configured and ping successful.")
 	dbQueries := database.New(db)
 	apiCfg := apiConfig{}
 	apiCfg.platform = os.Getenv("PLATFORM")
