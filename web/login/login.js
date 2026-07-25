@@ -1,5 +1,5 @@
-const env_link = "http://localhost:8080"
-const api_link = "http://localhost:8080/api"
+const env_link = "https://plurserv.fly.dev"
+const api_link = "https://plurserv.fly.dev/api"
 
 
 

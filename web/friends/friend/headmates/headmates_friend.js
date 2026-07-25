@@ -11,8 +11,8 @@ window.addEventListener('pageshow', function(event){
 });
     
 
-const env_link = "http://localhost:8080"
-const api_link = "http://localhost:8080/api"
+const env_link = "https://plurserv.fly.dev"
+const api_link = "https://plurserv.fly.dev/api"
 
 sessionStorage.removeItem("diary_id");
 sessionStorage.removeItem("entry_id");
