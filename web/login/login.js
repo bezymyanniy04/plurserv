@@ -71,9 +71,9 @@ async function Post_user() {
     try{
 
 
-    let Email = document.getElementById('UserEmail').value.toLowerCase();
-    let Password = document.getElementById('UserPassword').value;
-    let Sysname = document.getElementById('UserSystemName').value;    
+    let Email = document.getElementById("UserEmail").value.toLowerCase();
+    let Password = document.getElementById("UserPassword").value;
+    let Sysname = document.getElementById("UserSystemName").value;    
     
     let response = await fetch(`${api_link}/users`, {
         method: "POST",

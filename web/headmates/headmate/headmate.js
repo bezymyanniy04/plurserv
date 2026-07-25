@@ -357,7 +357,7 @@ async function post_alter() {
     try{
 
         let token = sessionStorage.getItem("token")
-        let name = document.getElementById("name").value
+        let name = "StandardName"
         let avatar = ""
         let pronouns = document.getElementById("pronouns").value
         let age = document.getElementById("age").value
@@ -388,7 +388,8 @@ async function post_alter() {
         } 
         let data = await response.json();
         sessionStorage.setItem("alter_id", data.id)
-        window.location.href=`headmate`
+        alter_id = sessionStorage.getItem("alter_id")
+        // window.location.href=`headmate`
     }
     
     catch(error){

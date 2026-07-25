@@ -15,8 +15,11 @@
 
 <body>
     <input id="name", style="font-size:xx-large;"0><br>
-    <p>avatar: </p> <input id="av_change"><br>
-
+    <button onclick="delete_avatar()">delete</button>
+    <button onclick="download_avatar()">download</button>
+                <input type="file" id="file_add">
+                <label for="file_add" class="label_file">Add file</label>
+   
     <input type="color" id="hm_colour" style="border-width: 0px; height: 50px; width: 100%;"></input><br>
     
     <p>pronouns: </p> <input id="pronouns"><br>
@@ -27,12 +30,12 @@
     
     
     
-    <button id="save" onclick="post_alter()"><h1>Save</h1></button>
+    <button id="save" onclick="edit_alter()"><h1>Save</h1></button>
 
 
 
     <script src='headmate.js'></script> 
-
+    <script>post_alter()</script>
 
 </body>
 
