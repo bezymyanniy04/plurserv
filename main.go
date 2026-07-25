@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"math"
 	"net/http"
 	"os"
@@ -2280,29 +2279,11 @@ func (cfg *apiConfig) revoke_token(w http.ResponseWriter, r *http.Request) {
 func main() {
 	godotenv.Load()
 	dbURL := os.Getenv("DB_URL")
-	// Загружаем .env только для локальной разработки
-	// if os.Getenv("PLATFORM") != "production" {
-	// godotenv.Load()
-	// }
-
-	// dbURL := os.Getenv("DB_URL")
-	if dbURL == "" {
-		log.Fatal("DB_URL environment variable is not set")
-	}
 
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
-		log.Fatalf("Failed to open database: %v", err)
+		fmt.Printf("DB not opening")
 	}
-
-	// Обязательно проверь подключение
-	if err = db.Ping(); err != nil {
-		log.Fatalf("Failed to ping database: %v", err)
-	}
-	// db, err := sql.Open("postgres", dbURL)
-	// if err != nil {
-	// 	fmt.Printf("DB not opening")
-	// }
 	dbQueries := database.New(db)
 	apiCfg := apiConfig{}
 	apiCfg.platform = os.Getenv("PLATFORM")
