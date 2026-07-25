@@ -2182,7 +2182,7 @@ func (cfg *apiConfig) login(w http.ResponseWriter, r *http.Request) {
 	userdb, err := cfg.db.GetUserByEmail(r.Context(), param.Email)
 
 	if err != nil {
-		err_mes("Something went wrong with db", 400, w)
+		err_mes(fmt.Sprintf("%v", err), 400, w)
 		return
 	}
 
