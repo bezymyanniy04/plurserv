@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"math"
 	"net/http"
 	"os"
@@ -256,7 +257,7 @@ func (cfg *apiConfig) post_user(w http.ResponseWriter, r *http.Request) {
 
 	userdb, err := cfg.db.CreateUser(r.Context(), database.CreateUserParams{Email: param.Email, HashedPassword: hashed_password, Avatar: param.Avatar, SystemName: param.SystemName, Theme: param.Theme, Font: param.Font})
 	if err != nil {
-		err_mes("Something went wrong db1", 400, w)
+		err_mes(fmt.Sprintf("%v", err), 400, w)
 		return
 	}
 	_, err = cfg.db.NewForNewbies(r.Context(), database.NewForNewbiesParams{UserID: userdb.ID, Text: default_for_newbies})
@@ -2279,11 +2280,21 @@ func (cfg *apiConfig) revoke_token(w http.ResponseWriter, r *http.Request) {
 func main() {
 	godotenv.Load()
 	dbURL := os.Getenv("DB_URL")
-	fmt.Println(dbURL)
+	log.Println(dbURL)
 	db, err := sql.Open("postgres", dbURL)
 	if err != nil {
 		fmt.Printf("DB not opening")
 	}
+	db.SetMaxOpenConns(25)                 // максимум открытых соединений
+	db.SetMaxIdleConns(5)                  // максимум простаивающих соединений
+	db.SetConnMaxLifetime(5 * time.Minute) // время жизни соединения
+	db.SetConnMaxIdleTime(1 * time.Minute) // время простоя соединения
+
+	// Проверка подключения
+	if err = db.Ping(); err != nil {
+		fmt.Printf("Failed to ping DB: %v", err)
+	}
+	fmt.Println("everything ok")
 	dbQueries := database.New(db)
 	apiCfg := apiConfig{}
 	apiCfg.platform = os.Getenv("PLATFORM")
