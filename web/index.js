@@ -21,7 +21,8 @@ sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
 redirect_to_login();
-
+get_user_myself();
+get_fronting_alters();
 
 
 function hov(){
@@ -69,9 +70,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-       sessionStorage.setItem("userId", data.user_id);
-       get_user_myself();
-get_fronting_alters();
+       localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);
@@ -83,7 +83,7 @@ async function get_user_myself() {
     
     try{
         var token = sessionStorage.getItem("token")
-        var userId = sessionStorage.getItem("userId")
+        var userId = localStorage.getItem("userId")
         var response = await fetch(`${api_link}/users/${userId}`, {
         method: "GET",
         headers: {
@@ -110,7 +110,7 @@ async function get_fronting_alters() {
     
     try{
         var token = sessionStorage.getItem("token")
-        var userId = sessionStorage.getItem("userId")
+        var userId = localStorage.getItem("userId")
         var response = await fetch(`${api_link}/alters/fronting/${userId}`, {
         method: "GET",
         headers: {

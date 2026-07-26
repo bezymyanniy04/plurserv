@@ -16,8 +16,8 @@ sessionStorage.removeItem("alter_id");
 
 
 redirect_to_login();
-document.getElementById("user_id").textContent = "id: "+ sessionStorage.getItem("userId");
-
+document.getElementById("user_id").textContent = "id: "+ localStorage.getItem("userId");
+friends();
 
 
 
@@ -49,8 +49,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
-friends();
+              localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);

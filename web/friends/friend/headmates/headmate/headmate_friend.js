@@ -53,8 +53,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
-get_alter();
+              localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);
@@ -62,7 +62,7 @@ get_alter();
 
 }
 
-
+get_alter();
 
 async function get_alter() {
     

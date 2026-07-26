@@ -47,7 +47,7 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
+              localStorage.setItem("userId", data.user_id);
 get_alters();
     }
     catch(error){
@@ -67,7 +67,7 @@ async function get_alters() {
         }
         
         let token = sessionStorage.getItem("token")
-        let userId = sessionStorage.getItem("userId")
+        let userId = localStorage.getItem("userId")
         let query = document.getElementById("query").value
         let response = await fetch(`${api_link}/alters?user_id=${userId}&query=${query}`, {
         method: "GET",

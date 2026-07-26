@@ -43,7 +43,7 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-        sessionStorage.setItem("userId", data.user_id);
+        localStorage.setItem("userId", data.user_id);
 get_user_myself()
     }
     catch(error){
@@ -58,7 +58,7 @@ function log_out(){
     redirect_to_login();
 }
 
-let userId = sessionStorage.getItem("userId")
+let userId = localStorage.getItem("userId")
 
 
 

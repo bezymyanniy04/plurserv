@@ -18,7 +18,7 @@ sessionStorage.removeItem("alter_id");
 
 redirect_to_login();
 
-
+get_text()
 
 
 async function redirect_to_login() {
@@ -47,8 +47,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
-get_text()
+              localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);

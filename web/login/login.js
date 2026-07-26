@@ -57,7 +57,7 @@ async function Login() {
         let data = await response.json();
         sessionStorage.setItem('token', data.token);
         localStorage.setItem('refresh_token', data.refresh_token);
-        sessionStorage.setItem('userId', data.id)
+        localStorage.setItem('userId', data.id)
         window.location.href=`${env_link}/app/`
 
     }

@@ -16,7 +16,7 @@ sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
 redirect_to_login();
-
+get_alters();
 setInterval(change_time, 1000)
 
 
@@ -48,8 +48,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
-get_alters();
+              localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);
@@ -63,7 +63,7 @@ async function get_alters() {
     
     try{
         let token = sessionStorage.getItem("token")
-        let userId = sessionStorage.getItem("userId")
+        let userId = localStorage.getItem("userId")
          if (sessionStorage.getItem("query") != null){
             document.getElementById("query").value = sessionStorage.getItem("query")
             sessionStorage.removeItem("query")

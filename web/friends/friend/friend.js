@@ -18,7 +18,8 @@ sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
 redirect_to_login();
-
+get_user();
+get_fronting_alters();
 
 async function redirect_to_login() {
     if (localStorage.getItem("refresh_token")=== null){
@@ -46,9 +47,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-              sessionStorage.setItem("userId", data.user_id);
-get_user();
-get_fronting_alters();
+              localStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);
