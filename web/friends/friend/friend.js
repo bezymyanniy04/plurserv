@@ -120,7 +120,7 @@ async function get_fronting_alters() {
                 <div id="headmate_row" style="display: flex; height: 150px; justify-content: stretch; margin: 10px">
                     <button id="headmate_id" onclick="hm_page(${i})" style="width: 80%;  border-top-left-radius: 15px; border-bottom-left-radius: 15px; background-color: lightpink; padding: 5px; display: flex;">
                         
-                        <img src="${"../../"+data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid ${data[i].colour};">
+                        <img src="${data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid ${data[i].colour};">
                         <div style="padding: 5px;">
                             <h2 id="Headmate_name">${data[i].name}</h2>
                             <p>${data[i].pronouns}</p>

@@ -89,7 +89,7 @@ async function friends() {
 
         let friend = `
                 <button id="friend" onclick="open_friend(${i})" style="width: 80%;  border-top-left-radius: 15px; border-bottom-left-radius: 15px; background-color: lightgray; padding: 5px; display: flex;">            
-                    <img src="${"../"+data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
+                    <img src="${data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
                     <h2 id="friend_name" style="padding: 5px;" >${data[i].system_name}</h2>                
                 </button>
             `
@@ -136,7 +136,7 @@ async function requests() {
 
         let friend = `
                 <div id="friend" style="width: 80%;  border-top-left-radius: 15px; border-bottom-left-radius: 15px; background-color: lightgray; padding: 5px; display: flex;">            
-                    <img src="${"../"+data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
+                    <img src="${data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
                     <h2 id="friend_name" style="padding: 5px;" >${data[i].system_name}</h2>                
                 </div>
             `
@@ -185,7 +185,7 @@ async function pending() {
 
         let friend = `
                 <div id="friend" style="width: 80%;  border-top-left-radius: 15px; border-bottom-left-radius: 15px; background-color: lightgray; padding: 5px; display: flex;">            
-                    <img src="${"../"+data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
+                    <img src="${data[i].avatar}" style="width: 110px; height: 110px; margin: 5px; border-radius: 10px; border: 5px solid black;">
                     <h2 id="friend_name" style="padding: 5px;" >${data[i].system_name}</h2>                
                     <button onclick="answer(${i}, '1')">Yes</button>
                     <button onclick="answer(${i}, '2')">No</button>

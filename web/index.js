@@ -182,18 +182,6 @@ async function get_fronting_alters() {
 }
 
 
-// var alter = `
-//                     var alter = `
-    //                 <button  id="frontContainer" onclick="hm_page(${i})" class="card" style="
-    // background-image: linear-gradient(rgba(${parseInt(color[0])}, ${parseInt(color[1])}, ${parseInt(color[2])}, 0.8), rgba(${parseInt(color[0])/1.5}, ${parseInt(color[1])/1.5}, ${parseInt(color[2])/1.5}, 0.8))">
-    //                     <div id="frontContainerInner" class="card" >
-    //                     <img src="${data[i].avatar}" id="frontAv">
-    //                     </div>
-                        
-    //                     <p id="frontName">${data[i].name}</p>
-    //                 </button>
-    //         `
-//             `
 
 function hm_page(alter_ident) {
     let alter_id = data_alters[alter_ident].id

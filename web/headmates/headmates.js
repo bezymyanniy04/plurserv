@@ -102,7 +102,7 @@ async function get_alters() {
                 <div id="headmate_row" class="hm_row">
                     <button id="headmate_id" class="btn headmate_button" onclick="hm_page(${i})" ">
                         
-                        <img src="${"../"+data[i].avatar}" class="img_alter" style="border-color: ${alter_colour}">
+                        <img src="${data[i].avatar}" class="img_alter" style="border-color: ${alter_colour}">
                         <div >
                             <h2 id="Headmate_name" class="text_hm">${data[i].name}</h2>
                             <p class="text_hm">${data[i].pronouns}</p>

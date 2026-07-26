@@ -83,7 +83,7 @@ async function get_user_myself() {
        document.getElementById("systemName").value = data.system_name
        document.getElementById("themeSelect").value = data.theme
        document.getElementById("fontSelect").value = data.font
-       document.getElementById("avatar_img").src = "../"+data.avatar
+       document.getElementById("avatar_img").src = data.avatar
     }
     catch(error){
         console.error(error);
@@ -128,9 +128,9 @@ file_input.addEventListener('input', ()=>{
     add_avatar()
 })
 async function download_avatar() {
-    let filename = document.getElementById("avatar_img").src.split('app/')[1]
+    // let filename = document.getElementById("avatar_img").src.split('app/')[1]
     // Option B: Force download programmatically
-    const response = await fetch(`/app/${filename}`);
+    const response = await fetch(`${filename}`);
     const blob = await response.blob();
     
     const url = window.URL.createObjectURL(blob);

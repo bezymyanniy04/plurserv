@@ -100,7 +100,7 @@ async function get_diaries() {
             }
             let diary = `
                 <button onclick="open_diary(${i})" class = "btn flex_cont corn" style="background-color: rgb(${parseInt(color[0])}, ${parseInt(color[1])}, ${parseInt(color[2])});; color: ${text_color};">
-                <img class="img_button" src="${"../"+data[i].alter_avatar}">
+                <img class="img_button" src="${data[i].alter_avatar}">
                 <p class="text_button">${data[i].alter_name}'s Diary</p>
                 </button>
 

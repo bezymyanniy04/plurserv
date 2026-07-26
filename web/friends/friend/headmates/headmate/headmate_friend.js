@@ -83,7 +83,7 @@ async function get_alter() {
         } 
         let data = await response.json();
         document.getElementById("name").textContent = data.name;
-        document.getElementById("avatar").src = "../../../../"+data.avatar;
+        document.getElementById("avatar").src = data.avatar;
         document.getElementById("pronouns").textContent = data.pronouns;
         document.getElementById("age").textContent = data.age;
         document.getElementById("role").textContent = data.role;

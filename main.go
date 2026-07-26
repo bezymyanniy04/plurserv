@@ -247,7 +247,7 @@ func (cfg *apiConfig) post_user(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if param.Avatar == "" {
-		param.Avatar = "assets/default_avater.jpg"
+		param.Avatar = "assets/default-avatar.png"
 	}
 	if param.SystemName == "" {
 		param.SystemName = "System"
@@ -359,7 +359,8 @@ func (cfg *apiConfig) edit_userinfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if param.Avatar == "" {
-		param.Avatar = "assets/default_avater.jpg"
+		param.Avatar = "assets/default-avatar.png"
+
 	}
 	if param.SystemName == "" {
 		param.SystemName = "System"
@@ -410,7 +411,7 @@ func (cfg *apiConfig) edit_userinfo_settings(w http.ResponseWriter, r *http.Requ
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default_avater.jpg"
+		param.Avatar = "assets/default-avatar.png"
 	}
 	if param.SystemName == "" {
 		param.SystemName = "System"
@@ -478,7 +479,7 @@ func (cfg *apiConfig) post_alter(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default_avater.jpg"
+		param.Avatar = "assets/default-avatar.png"
 	}
 	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
 	if err != nil {
@@ -714,7 +715,7 @@ func (cfg *apiConfig) edit_alter(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default_avater.jpg"
+		param.Avatar = "assets/default-avatar.png"
 	}
 	alterdb, err := cfg.db.EditAlter(r.Context(), database.EditAlterParams{ID: alterId, UserID: userid, Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour})
 	if err != nil {
@@ -1917,10 +1918,15 @@ func (cfg *apiConfig) edit_user_avatar(w http.ResponseWriter, r *http.Request) {
 		err_mes("Something went wrong with file", 400, w)
 		return
 	}
+	fileDir := "/app/assets/avatars"
+	if err := ensureDir(fileDir); err != nil {
+		err_mes("Could not create directory", 500, w)
+		return
+	}
 
 	filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
-	filepath := fmt.Sprintf("assets/avatars/%v", filename)
-	outFile, err := os.Create("web/" + filepath)
+	filepath := fmt.Sprintf("%s/%s", fileDir, filename)
+	outFile, err := os.Create(filepath)
 
 	if err != nil {
 		err_mes("Something went wrong with creating a file", 400, w)
@@ -1962,15 +1968,15 @@ func (cfg *apiConfig) delete_user_avatar(w http.ResponseWriter, r *http.Request)
 
 	usdb, err := cfg.db.GetUser(r.Context(), userid)
 	if strings.Contains(usdb.Avatar, "avatars") {
-		err = os.Remove("web/" + usdb.Avatar)
+		err = os.Remove("/app" + usdb.Avatar)
 		if err != nil {
-			fmt.Println(err)
+			// fmt.Println(err)
 			err_mes("failed to delete the file", 404, w)
 			return
 		}
 	}
 
-	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: "assets/default_avater.jpg", ID: userid})
+	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: "assets/default-avatar.png", ID: userid})
 	user := User{
 		ID:         userdb.ID,
 		CreatedAt:  userdb.CreatedAt,
@@ -2020,10 +2026,15 @@ func (cfg *apiConfig) edit_alter_avatar(w http.ResponseWriter, r *http.Request) 
 		err_mes("Something went wrong with file", 400, w)
 		return
 	}
+	fileDir := "/app/assets/avatars"
+	if err := ensureDir(fileDir); err != nil {
+		err_mes("Could not create directory", 500, w)
+		return
+	}
 
 	filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
-	filepath := fmt.Sprintf("assets/avatars/%v", filename)
-	outFile, err := os.Create("web/" + filepath)
+	filepath := fmt.Sprintf("%s/%s", fileDir, filename)
+	outFile, err := os.Create(filepath)
 
 	if err != nil {
 		err_mes("Something went wrong with creating a file", 400, w)
@@ -2076,7 +2087,7 @@ func (cfg *apiConfig) delete_alter_avatar(w http.ResponseWriter, r *http.Request
 
 	aldb, err := cfg.db.GetAlter(r.Context(), alterId)
 	if strings.Contains(aldb.Avatar, "avatars") {
-		err = os.Remove("web/" + aldb.Avatar)
+		err = os.Remove("/app" + aldb.Avatar)
 		if err != nil {
 			fmt.Println(err)
 			err_mes("failed to delete the file", 404, w)
@@ -2084,7 +2095,7 @@ func (cfg *apiConfig) delete_alter_avatar(w http.ResponseWriter, r *http.Request
 		}
 	}
 
-	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: "assets/default_avater.jpg", ID: alterId, UserID: userId})
+	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: "assets/default-avatar.png", ID: alterId, UserID: userId})
 	alter := Alter{
 		ID:          alterdb.ID,
 		CreatedAt:   alterdb.CreatedAt,
