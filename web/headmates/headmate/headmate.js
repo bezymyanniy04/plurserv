@@ -118,7 +118,7 @@ async function get_alter() {
 
 }
 async function download_avatar() {
-    // let filename = document.getElementById("avatar").src.split('app/')[1]
+    let filename = document.getElementById("avatar").src
     // Option B: Force download programmatically
     const response = await fetch(`${filename}`);
     const blob = await response.blob();

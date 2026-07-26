@@ -129,7 +129,7 @@ file_input.addEventListener('input', ()=>{
 })
 async function download_avatar() {
     let filename = document.getElementById("avatar_img").src
-    console.log(filename)
+    // console.log(filename)
     // Option B: Force download programmatically
     const response = await fetch(`${filename}`);
     const blob = await response.blob();
