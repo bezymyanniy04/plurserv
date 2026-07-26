@@ -424,6 +424,7 @@ async function post_alter() {
         let data = await response.json();
         sessionStorage.setItem("alter_id", data.id)
         alter_id = sessionStorage.getItem("alter_id")
+        document.getElementById("avatar").src = data.avatar;
         // window.location.href=`headmate`
     }
     
