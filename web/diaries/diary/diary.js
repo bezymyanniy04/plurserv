@@ -89,7 +89,7 @@ get_diary();
 get_entries();
 
 async function redirect_to_login() {
-    if (localStorage.getItem("refresh_token")=== null){
+    if (localStorage.getItem("refresh_token")=== null || localStorage.getItem("userId")=== null){
         window.location.href=`${env_link}/app/login`
     }else{
         refresh()
