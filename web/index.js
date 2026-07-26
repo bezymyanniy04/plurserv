@@ -104,7 +104,8 @@ async function get_user_myself() {
         if (!response.ok){
             if (try1 <1){
                 try1 ++;
-                get_user_myself()
+                setTimeout(get_user_myself(), 100)
+                
             }
             throw new Error();
         } 
@@ -136,7 +137,7 @@ async function get_fronting_alters() {
         if (!response.ok){
             if (try2 <1){
                 try2 ++;
-                get_fronting_alters()
+                setTimeout(get_fronting_alters(), 100)
             }
             throw new Error();
         } 
