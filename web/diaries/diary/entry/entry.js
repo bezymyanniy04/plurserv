@@ -280,13 +280,13 @@ async function edit_entry_adding() {
 
 async function download_file(i) {
     let filename = data_files[i].file 
-    const response = await fetch(`/app/${filename}`);
+    const response = await fetch(`${filename}`);
     const blob = await response.blob();
     
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = "/app"+filename; 
+    a.download = filename; 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
