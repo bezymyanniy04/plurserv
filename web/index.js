@@ -71,7 +71,6 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
-       console.log(sessionStorage.getItem("token"))
        localStorage.setItem("userId", data.user_id);
         get_user_myself();
         get_fronting_alters();
@@ -86,10 +85,6 @@ async function get_user_myself() {
     
     try{
         var token = sessionStorage.getItem("token")
-        console.log({
-            "token": token
-        }
-        )
         var userId = localStorage.getItem("userId")
         var response = await fetch(`${api_link}/users/${userId}`, {
         method: "GET",
@@ -175,7 +170,6 @@ async function get_fronting_alters() {
                     </button>`
         }
         if (sessionStorage.getItem("scroll") != null){
-            console.log(sessionStorage.getItem("scroll"))
             window.scroll(0, sessionStorage.getItem("scroll"))
             sessionStorage.removeItem("scroll")
         }

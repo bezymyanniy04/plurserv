@@ -1726,8 +1726,8 @@ func (cfg *apiConfig) post_diary_file(w http.ResponseWriter, r *http.Request) {
 	}
 
 	filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
-	filepath := fmt.Sprintf("assets/files/%v", filename)
-	outFile, err := os.Create("web/" + filepath)
+	filepath := fmt.Sprintf("/app/assets/files/%v", filename)
+	outFile, err := os.Create(filepath)
 
 	if err != nil {
 		err_mes("Something went wrong with creating a file", 400, w)
