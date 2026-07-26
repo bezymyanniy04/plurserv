@@ -1741,9 +1741,6 @@ func (cfg *apiConfig) post_diary_file(w http.ResponseWriter, r *http.Request) {
 	filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
 	filepath := fmt.Sprintf("%s/%s", fileDir, filename)
 	outFile, err := os.Create(filepath)
-	// filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
-	// filepath := fmt.Sprintf("/app/assets/files/%v", filename)
-	// outFile, err := os.Create(filepath)
 
 	if err != nil {
 		err_mes("Something went wrong with creating a file", 400, w)
@@ -1764,7 +1761,7 @@ func (cfg *apiConfig) post_diary_file(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	filedb, err := cfg.db.NewDiaryEntryFile(r.Context(), database.NewDiaryEntryFileParams{EntryID: entryId, File: filepath, UserID: userid})
+	filedb, err := cfg.db.NewDiaryEntryFile(r.Context(), database.NewDiaryEntryFileParams{EntryID: entryId, File: filepath[4:], UserID: userid})
 	if err != nil {
 		// fmt.Println(err)
 		err_mes("Something went wrong with db2", 400, w)
