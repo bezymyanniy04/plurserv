@@ -149,7 +149,7 @@ async function delete_avatar() {
         if (!response.ok){
             throw new Error();
         } 
-        get_alter();
+        document.getElementById("avatar").src = "/assets/default-avatar.png"
 
 
     }
