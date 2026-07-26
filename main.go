@@ -1940,7 +1940,7 @@ func (cfg *apiConfig) edit_user_avatar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: filepath, ID: userId})
+	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: filepath[4:], ID: userId})
 	user := User{
 		ID:         userdb.ID,
 		CreatedAt:  userdb.CreatedAt,
@@ -2048,7 +2048,7 @@ func (cfg *apiConfig) edit_alter_avatar(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: filepath, ID: alterId, UserID: userId})
+	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: filepath[4:], ID: alterId, UserID: userId})
 	alter := Alter{
 		ID:          alterdb.ID,
 		CreatedAt:   alterdb.CreatedAt,
