@@ -55,6 +55,8 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
+              sessionStorage.setItem("userId", data.user_id);
+
     }
     catch(error){
         console.error(error);
@@ -283,7 +285,7 @@ async function change_front() {
 
 }
 
-async function edit_alter(av) {
+async function edit_alter() {
     
     try{
 
@@ -316,6 +318,47 @@ async function edit_alter(av) {
             throw new Error();
         } 
         get_alter()
+        
+    }
+    
+    catch(error){
+        console.error(error);
+    }
+
+}
+async function edit_alter_new() {
+    
+    try{
+
+        let token = sessionStorage.getItem("token")
+        let name = document.getElementById("name").value
+        let pronouns = document.getElementById("pronouns").value
+        let age = document.getElementById("age").value
+        let role = document.getElementById("role").value
+        let description = document.getElementById("description").value
+        let colour = document.getElementById("hm_colour").value
+        
+        let response = await fetch(`${api_link}/alters/${alter_id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            name: name,
+            pronouns: pronouns,
+            age: age,
+            role: role,
+            description: description,
+            colour: colour
+        })
+  
+    });
+
+        if (!response.ok){
+            throw new Error();
+        } 
+        window.location.href="../headmate"
         
     }
     
@@ -357,14 +400,6 @@ async function post_alter() {
     try{
 
         let token = sessionStorage.getItem("token")
-        let name = "StandardName"
-        let avatar = ""
-        let pronouns = document.getElementById("pronouns").value
-        let age = document.getElementById("age").value
-        let role = document.getElementById("role").value
-        let description = document.getElementById("description").value
-        let colour = document.getElementById("hm_colour").value
-
         let response = await fetch(`${api_link}/alters`, {
         method: "POST",
         headers: {
@@ -372,13 +407,12 @@ async function post_alter() {
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-            name: name,
-            avatar: avatar,
-            pronouns: pronouns,
-            age: age,
-            role: role,
-            description: description,
-            colour: colour
+            name: "StandardNameat",
+            pronouns: "",
+            age: "",
+            role: "",
+            description: "",
+            colour: ""
         })
   
     });

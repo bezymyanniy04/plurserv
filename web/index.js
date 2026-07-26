@@ -70,6 +70,7 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
+       sessionStorage.setItem("userId", data.user_id);
     }
     catch(error){
         console.error(error);

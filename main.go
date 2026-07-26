@@ -472,7 +472,7 @@ func (cfg *apiConfig) post_alter(w http.ResponseWriter, r *http.Request) {
 	if param.Avatar == "" {
 		param.Avatar = "assets/default_avater.jpg"
 	}
-	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Avatar: param.Avatar, Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
+	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
 	if err != nil {
 		err_mes("Something went wrong with db", 400, w)
 		return
@@ -536,6 +536,13 @@ func (cfg *apiConfig) get_alters(w http.ResponseWriter, r *http.Request) {
 
 	alters := []Alter{}
 	for _, alterdb := range altersdb {
+		if alterdb.Name == "StandardNameat" {
+			err = cfg.db.DeleteAlter(r.Context(), alterdb.ID)
+			if err != nil {
+				err_mes("could not delete empty alters", 501, w)
+			}
+			continue
+		}
 		alter := Alter{
 			ID:          alterdb.ID,
 			CreatedAt:   alterdb.CreatedAt,
@@ -580,6 +587,13 @@ func (cfg *apiConfig) get_alters_without_diary(w http.ResponseWriter, r *http.Re
 
 	alters := []Alter{}
 	for _, alterdb := range altersdb {
+		if alterdb.Name == "StandardNameat" {
+			err = cfg.db.DeleteAlter(r.Context(), alterdb.ID)
+			if err != nil {
+				err_mes("could not delete empty alters", 501, w)
+			}
+			continue
+		}
 		alter := Alter{
 			ID:          alterdb.ID,
 			CreatedAt:   alterdb.CreatedAt,
@@ -2253,10 +2267,10 @@ func (cfg *apiConfig) refresh(w http.ResponseWriter, r *http.Request) {
 	}
 
 	type RefreshedToken struct {
-		// User_id uuid.UUID `json:"user_id"`
-		Token string `json:"token"`
+		User_id uuid.UUID `json:"user_id"`
+		Token   string    `json:"token"`
 	}
-	rt := RefreshedToken{Token: refreshed}
+	rt := RefreshedToken{Token: refreshed, User_id: dbtoken.UserID}
 	marsh(rt, 200, w)
 }
 
@@ -2291,8 +2305,10 @@ func main() {
 	// Проверка подключения
 	if err = db.Ping(); err != nil {
 		fmt.Printf("Failed to ping DB: %v", err)
+	} else {
+		fmt.Println("everything ok")
+
 	}
-	fmt.Println("everything ok")
 	dbQueries := database.New(db)
 	apiCfg := apiConfig{}
 	apiCfg.platform = os.Getenv("PLATFORM")

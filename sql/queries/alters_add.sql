@@ -1,5 +1,5 @@
 -- name: CreateAlter :one
-INSERT INTO alters (id, created_at, updated_at, avatar, name, pronouns, age, alter_role, description, colour, user_id)
+INSERT INTO alters (id, created_at, updated_at, name, pronouns, age, alter_role, description, colour, user_id)
 VALUES (
     gen_random_uuid(),
     NOW(),
@@ -10,7 +10,6 @@ VALUES (
     $4,
     $5,
     $6,
-    $7,
-    $8
+    $7
 )
 RETURNING  *;
