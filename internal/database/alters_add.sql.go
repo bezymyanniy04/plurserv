@@ -12,7 +12,7 @@ import (
 )
 
 const createAlter = `-- name: CreateAlter :one
-INSERT INTO alters (id, created_at, updated_at, name, pronouns, age, alter_role, description, colour, user_id)
+INSERT INTO alters (id, created_at, updated_at, avatar, name, pronouns, age, alter_role, description, colour, user_id)
 VALUES (
     gen_random_uuid(),
     NOW(),
@@ -23,12 +23,14 @@ VALUES (
     $4,
     $5,
     $6,
-    $7
+    $7,
+    $8
 )
 RETURNING  id, created_at, updated_at, avatar, name, pronouns, age, alter_role, description, colour, fronting, fronting_since, user_id
 `
 
 type CreateAlterParams struct {
+	Avatar      string
 	Name        string
 	Pronouns    string
 	Age         string
@@ -40,6 +42,7 @@ type CreateAlterParams struct {
 
 func (q *Queries) CreateAlter(ctx context.Context, arg CreateAlterParams) (Alter, error) {
 	row := q.db.QueryRowContext(ctx, createAlter,
+		arg.Avatar,
 		arg.Name,
 		arg.Pronouns,
 		arg.Age,

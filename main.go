@@ -481,7 +481,7 @@ func (cfg *apiConfig) post_alter(w http.ResponseWriter, r *http.Request) {
 	if param.Avatar == "" {
 		param.Avatar = "/assets/default-avatar.png"
 	}
-	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
+	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Avatar: param.Avatar, Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
 	if err != nil {
 		err_mes("Something went wrong with db", 400, w)
 		return
