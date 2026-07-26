@@ -17,9 +17,11 @@
 body{
     background-color: var(--bg_colour);
     font-family: var(--font_main);
-    width: 100vw;
+    width: 90vw;
      margin: 0;
      font-size: larger;
+    /* padding-right: 5vw;
+    padding-left: 5vw; */
     /*padding-right: 1%; */
     
 
@@ -36,7 +38,7 @@ img{
 .card{
     border-radius: 30px;
     border: none;
-    /* max-width: 95vw; */
+    max-width: 90vw;
 }
 
 .w_padding{
