@@ -83,7 +83,7 @@ async function get_user_myself() {
        document.getElementById("systemName").value = data.system_name
        document.getElementById("themeSelect").value = data.theme
        document.getElementById("fontSelect").value = data.font
-       document.getElementById("avatar_img").src = data.avatar
+       document.getElementById("avatar_img").src = "/app"+data.avatar
     }
     catch(error){
         console.error(error);
