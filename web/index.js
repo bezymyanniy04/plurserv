@@ -20,10 +20,13 @@ sessionStorage.removeItem("diary_id");
 sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
+let try1 = 0
+let try2 = 0
+
 redirect_to_login();
 get_user_myself();
 get_fronting_alters();
-
+let data_alters;
 
 function hov(){
     const headmates_list = document.querySelectorAll('#frontContainer');
@@ -94,9 +97,14 @@ async function get_user_myself() {
     });
 
         if (!response.ok){
+            if (try1 <1){
+                try1 ++;
+                get_user_myself()
+            }
             throw new Error();
         } 
         var data = await response.json();
+        try1 = 0;
        document.getElementById("systemName").textContent = data.system_name + "!"
     }
     catch(error){
@@ -105,7 +113,7 @@ async function get_user_myself() {
 
 }
 
-let data_alters;
+
 async function get_fronting_alters() {
     
     try{
@@ -121,10 +129,14 @@ async function get_fronting_alters() {
     });
 
         if (!response.ok){
+            if (try2 <1){
+                try2 ++;
+                get_fronting_alters()
+            }
             throw new Error();
         } 
         var data = await response.json();
-
+        try2 = 0
         data_alters = data
         if (data.length == 0){
             var noone = document.getElementById("noFrontMessage")
