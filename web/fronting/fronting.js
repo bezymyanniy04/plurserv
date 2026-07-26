@@ -44,6 +44,7 @@ async function refresh() {
     });
 
         if (!response.ok){
+            window.location.href=`${env_link}/app/login`
             throw new Error();
         } 
         var data = await response.json();

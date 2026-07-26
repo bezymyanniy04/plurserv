@@ -45,6 +45,7 @@ async function refresh() {
     });
 
         if (!response.ok){
+            window.location.href=`${env_link}/app/login`
             throw new Error();
         } 
         var data = await response.json();
@@ -265,7 +266,7 @@ async function add_friend() {
 
 function copy_id(){
     console.log("hey")
-    navigator.clipboard.writeText(sessionStorage.getItem("userId"))
+    navigator.clipboard.writeText(localStorage.getItem("userId"))
 }
 
 
