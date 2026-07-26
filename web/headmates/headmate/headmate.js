@@ -87,7 +87,7 @@ async function get_alter() {
         let colour = "#"+parseInt(color[0]).toString(16).padStart(2, '0') + parseInt(color[1]).toString(16).padStart(2, '0') + parseInt(color[2]).toString(16).padStart(2, '0');
 
         document.getElementById("name").value = data.name;
-        document.getElementById("avatar").src = "../../"+data.avatar;
+        document.getElementById("avatar").src = data.avatar;
         document.getElementById("pronouns").value = data.pronouns;
         document.getElementById("age").value = data.age;
         document.getElementById("role").value = data.role;
@@ -179,8 +179,9 @@ async function add_avatar() {
         if (!response.ok){
             throw new Error();
         } 
+        let data = await response.json();
 
-        get_alter();
+        document.getElementById("avatar").src = data.avatar;
 
 
     }
