@@ -297,7 +297,7 @@ input:focus{
 }
 
 .menu_button{
-    min-width: 300px;
+    min-width: 250px;
     width: 45%;
     
     color: var(--text_dark);
