@@ -2342,7 +2342,8 @@ func main() {
 
 	//app
 	mux.Handle("/app/", apiCfg.middlewareMetricsInc(http.StripPrefix("/app/", http.FileServer(http.Dir("/web")))))
-
+	// Раздаём файлы из папки assets
+	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("/app/assets"))))
 	//readiness
 	mux.HandleFunc("GET /api/healthz", Readiness)
 
