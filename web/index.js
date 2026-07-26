@@ -52,7 +52,7 @@ async function redirect_to_login() {
     }
 }
 
-async function refresh() {
+function refresh() {
     
     try{
         var refresh = localStorage.getItem("refresh_token")
@@ -71,7 +71,7 @@ async function refresh() {
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
        sessionStorage.setItem("userId", data.user_id);
-       get_user_myself()
+    //    get_user_myself()
     }
     catch(error){
         console.error(error);
