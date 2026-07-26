@@ -14,7 +14,7 @@ const api_link = "https://plurserv.fly.dev/api"
 
 
 redirect_to_login();
-
+get_user_myself()
 
 
 async function redirect_to_login() {
@@ -44,7 +44,7 @@ async function refresh() {
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user_id);
-get_user_myself()
+
     }
     catch(error){
         console.error(error);

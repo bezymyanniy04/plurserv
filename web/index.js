@@ -20,12 +20,10 @@ sessionStorage.removeItem("diary_id");
 sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
-let try1 = 0
-let try2 = 0
 
 redirect_to_login();
 get_user_myself();
-get_fronting_alters();
+        get_fronting_alters();
 let data_alters;
 
 function hov(){
@@ -75,7 +73,8 @@ async function refresh() {
        sessionStorage.setItem("token", data.token);
        console.log(sessionStorage.getItem("token"))
        localStorage.setItem("userId", data.user_id);
-
+        get_user_myself();
+        get_fronting_alters();
     }
     catch(error){
         console.error(error);
@@ -102,11 +101,7 @@ async function get_user_myself() {
     });
 
         if (!response.ok){
-            if (try1 <1){
-                try1 ++;
-                setTimeout(get_user_myself(), 100)
-                
-            }
+
             throw new Error();
         } 
         var data = await response.json();
@@ -135,10 +130,7 @@ async function get_fronting_alters() {
     });
 
         if (!response.ok){
-            if (try2 <1){
-                try2 ++;
-                setTimeout(get_fronting_alters(), 100)
-            }
+
             throw new Error();
         } 
         var data = await response.json();
