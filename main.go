@@ -191,6 +191,14 @@ func hex_to_rgb(hex string, w http.ResponseWriter) string {
 	}
 	return colour
 }
+func ensureDir(path string) error {
+	// Проверяем, существует ли папка
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		// Если нет — создаём её и все родительские папки
+		return os.MkdirAll(path, 0755)
+	}
+	return nil
+}
 
 //json
 
@@ -1724,10 +1732,18 @@ func (cfg *apiConfig) post_diary_file(w http.ResponseWriter, r *http.Request) {
 		err_mes("Something went wrong with file", 400, w)
 		return
 	}
+	fileDir := "/app/assets/files"
+	if err := ensureDir(fileDir); err != nil {
+		err_mes("Could not create directory", 500, w)
+		return
+	}
 
 	filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
-	filepath := fmt.Sprintf("/app/assets/files/%v", filename)
+	filepath := fmt.Sprintf("%s/%s", fileDir, filename)
 	outFile, err := os.Create(filepath)
+	// filename := fmt.Sprintf("%d_%s", time.Now().Unix(), header.Filename)
+	// filepath := fmt.Sprintf("/app/assets/files/%v", filename)
+	// outFile, err := os.Create(filepath)
 
 	if err != nil {
 		err_mes("Something went wrong with creating a file", 400, w)
