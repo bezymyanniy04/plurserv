@@ -73,6 +73,7 @@ async function refresh() {
         } 
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
+       console.log(sessionStorage.getItem("token"))
        localStorage.setItem("userId", data.user_id);
 
     }
@@ -86,6 +87,10 @@ async function get_user_myself() {
     
     try{
         var token = sessionStorage.getItem("token")
+        console.log({
+            "token": token
+        }
+        )
         var userId = localStorage.getItem("userId")
         var response = await fetch(`${api_link}/users/${userId}`, {
         method: "GET",
