@@ -2012,7 +2012,7 @@ func (cfg *apiConfig) edit_alter_avatar(w http.ResponseWriter, r *http.Request) 
 
 	aldb, err := cfg.db.GetAlter(r.Context(), alterId)
 	if strings.Contains(aldb.Avatar, "avatars") {
-		err = os.Remove("web/" + aldb.Avatar)
+		err = os.Remove("/app" + aldb.Avatar)
 		if err != nil {
 			fmt.Println(err)
 			err_mes("failed to delete the file", 404, w)
