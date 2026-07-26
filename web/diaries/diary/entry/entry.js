@@ -163,7 +163,7 @@ async function get_entry_files() {
         files.innerHTML = ""
         for (let i = 0; i < data.length; i++){
             
-            let image = `<div class="file"><img class="file_img" src="${"../../../"+data[i].file}" >
+            let image = `<div class="file"><img class="file_img" src="${data[i].file}" >
             <button class="close_file_btn" onclick="download_file(${i})">download</button>
                         <button class="close_file_btn" onclick="delete_file(${i})">&#10005;</button></div>`
             files.innerHTML += image
