@@ -247,7 +247,7 @@ func (cfg *apiConfig) post_user(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if param.Avatar == "" {
-		param.Avatar = "assets/default-avatar.png"
+		param.Avatar = "/assets/default-avatar.png"
 	}
 	if param.SystemName == "" {
 		param.SystemName = "System"
@@ -359,7 +359,7 @@ func (cfg *apiConfig) edit_userinfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if param.Avatar == "" {
-		param.Avatar = "assets/default-avatar.png"
+		param.Avatar = "/assets/default-avatar.png"
 
 	}
 	if param.SystemName == "" {
@@ -411,7 +411,7 @@ func (cfg *apiConfig) edit_userinfo_settings(w http.ResponseWriter, r *http.Requ
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default-avatar.png"
+		param.Avatar = "/assets/default-avatar.png"
 	}
 	if param.SystemName == "" {
 		param.SystemName = "System"
@@ -479,7 +479,7 @@ func (cfg *apiConfig) post_alter(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default-avatar.png"
+		param.Avatar = "/assets/default-avatar.png"
 	}
 	alterdb, err := cfg.db.CreateAlter(r.Context(), database.CreateAlterParams{Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour, UserID: userid})
 	if err != nil {
@@ -715,7 +715,7 @@ func (cfg *apiConfig) edit_alter(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if param.Avatar == "" {
-		param.Avatar = "assets/default-avatar.png"
+		param.Avatar = "/assets/default-avatar.png"
 	}
 	alterdb, err := cfg.db.EditAlter(r.Context(), database.EditAlterParams{ID: alterId, UserID: userid, Name: param.Name, Pronouns: param.Pronouns, Age: param.Age, AlterRole: param.Role, Description: param.Description, Colour: colour})
 	if err != nil {
@@ -1976,7 +1976,7 @@ func (cfg *apiConfig) delete_user_avatar(w http.ResponseWriter, r *http.Request)
 		}
 	}
 
-	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: "assets/default-avatar.png", ID: userid})
+	userdb, err := cfg.db.EditUserAvatar(r.Context(), database.EditUserAvatarParams{Avatar: "/assets/default-avatar.png", ID: userid})
 	user := User{
 		ID:         userdb.ID,
 		CreatedAt:  userdb.CreatedAt,
@@ -2095,7 +2095,7 @@ func (cfg *apiConfig) delete_alter_avatar(w http.ResponseWriter, r *http.Request
 		}
 	}
 
-	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: "assets/default-avatar.png", ID: alterId, UserID: userId})
+	alterdb, err := cfg.db.EditAlterAvatar(r.Context(), database.EditAlterAvatarParams{Avatar: "/assets/default-avatar.png", ID: alterId, UserID: userId})
 	alter := Alter{
 		ID:          alterdb.ID,
 		CreatedAt:   alterdb.CreatedAt,
