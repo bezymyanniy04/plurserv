@@ -280,14 +280,13 @@ async function edit_entry_adding() {
 
 async function download_file(i) {
     let filename = data_files[i].file 
-    // Option B: Force download programmatically
     const response = await fetch(`/app/${filename}`);
     const blob = await response.blob();
     
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = filename; // This forces download instead of display
+    a.download = "/app"+filename; 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

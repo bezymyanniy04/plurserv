@@ -1876,7 +1876,7 @@ func (cfg *apiConfig) delete_diary_entry_file(w http.ResponseWriter, r *http.Req
 		return
 	}
 	if strings.Contains(filedb.File, "files") {
-		err = os.Remove(filedb.File)
+		err = os.Remove("/app" + filedb.File)
 		if err != nil {
 			err_mes("failed to delete the file", 404, w)
 			return
