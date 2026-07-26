@@ -22,8 +22,8 @@ sessionStorage.removeItem("alter_id");
 
 
 redirect_to_login();
-get_user_myself();
-        get_fronting_alters();
+// get_user_myself();
+//         get_fronting_alters();
 let data_alters;
 
 function hov(){
