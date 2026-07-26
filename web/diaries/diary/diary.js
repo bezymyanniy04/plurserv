@@ -85,8 +85,7 @@ font_picker.addEventListener('input', () => {
 
 
 
-get_diary();
-get_entries();
+
 
 async function redirect_to_login() {
     if (localStorage.getItem("refresh_token")=== null){
@@ -115,7 +114,8 @@ async function refresh() {
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
               sessionStorage.setItem("userId", data.user_id);
-
+get_diary();
+get_entries();
     }
     catch(error){
         console.error(error);

@@ -18,7 +18,7 @@ sessionStorage.removeItem("entry_id");
 sessionStorage.removeItem("alter_id");
 
 redirect_to_login();
-get_diaries();
+
 
 
 
@@ -51,7 +51,7 @@ async function refresh() {
         var data = await response.json();
        sessionStorage.setItem("token", data.token);
               sessionStorage.setItem("userId", data.user_id);
-
+get_diaries();
     }
     catch(error){
         console.error(error);
