@@ -66,7 +66,7 @@ async function get_user_myself() {
     
     try{
         var token = sessionStorage.getItem("token")
-        
+        var userId = localStorage.getItem("userId")
         var response = await fetch(`${api_link}/users/${userId}`, {
         method: "GET",
         headers: {
