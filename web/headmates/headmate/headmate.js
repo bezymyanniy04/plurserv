@@ -70,6 +70,7 @@ async function refresh() {
 async function get_alter() {
     
     try{
+        let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
         method: "GET",
@@ -136,6 +137,7 @@ async function download_avatar() {
 async function delete_avatar() {
     
     try{    
+        let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token");
         let response = await fetch(`${api_link}/alters/avatar/${alter_id}`, {
         method: "DELETE",
@@ -161,6 +163,7 @@ async function delete_avatar() {
 async function add_avatar() {
     
     try{    
+        let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token");
         const fileInput = document.getElementById('file_add');
         const file = fileInput.files[0];
@@ -194,6 +197,7 @@ async function add_avatar() {
 async function get_diary_by_alter() {
     
     try{
+        let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let response = await fetch(`${api_link}/diary/${alter_id}`, {
         method: "GET",
@@ -227,6 +231,7 @@ async function get_diary_by_alter() {
 async function add_diary() {
     
     try{
+        let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let response = await fetch(`${api_link}/diaries/${alter_id}`, {
         method: "POST",
@@ -262,7 +267,7 @@ async function add_diary() {
 async function change_front() {
     
     try{
-
+let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
         method: "PATCH",
@@ -297,7 +302,7 @@ async function edit_alter() {
         let role = document.getElementById("role").value
         let description = quill.getSemanticHTML(0);
         let colour = document.getElementById("hm_colour").value
-        
+        let alter_id = sessionStorage.getItem("alter_id")
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
         method: "PUT",
         headers: {
@@ -330,7 +335,7 @@ async function edit_alter() {
 async function edit_alter_new() {
     
     try{
-
+let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let name = document.getElementById("name").value
         let pronouns = document.getElementById("pronouns").value
@@ -372,7 +377,7 @@ async function edit_alter_new() {
 async function delete_alter() {
     
     try{
-
+let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")        
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
         method: "DELETE",
@@ -399,7 +404,7 @@ async function delete_alter() {
 async function post_alter() {
     
     try{
-
+// let alter_id = sessionStorage.getItem("alter_id")
         let token = sessionStorage.getItem("token")
         let response = await fetch(`${api_link}/alters`, {
         method: "POST",
