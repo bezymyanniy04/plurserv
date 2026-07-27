@@ -45,17 +45,15 @@
 
 <button class="btn" id="back" onclick="location.href='..'">back</button>
 
-
-<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src='headmate.js'></script> 
-    
-    
     <script>existing_headmate()</script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
   const quill = new Quill('#editor', {
     theme: 'snow'
   });
 </script>
+<script>document.getElementsByClassName("ql-toolbar")[0].style.display = "block"</script>
 </div>
 </body>
 
