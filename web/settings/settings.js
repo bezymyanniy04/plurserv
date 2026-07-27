@@ -8,6 +8,12 @@ window.addEventListener('pageshow', function(event){
 
 });
     
+const theme_input = document.getElementById("themeSelect")
+theme_input.addEventListener('input', ()=>{
+    let theme = theme_input.value == 0 ? "light" : "dark";
+
+    document.documentElement.style.setProperty('color-scheme', theme)
+})
 
 const env_link = "https://plurserv.fly.dev"
 const api_link = "https://plurserv.fly.dev/api"
