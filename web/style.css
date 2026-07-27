@@ -1,6 +1,20 @@
 
 
 :root{
+    --darker_main_colour: light-dark(#604a7b, #b3a2c7); 
+    --main_colour: light-dark(#b3a2c7, #604a7b);
+    --lightish_main_colour: #ccc1da;
+    --lighter_main_colour: #e6e0ec;
+    --text_light: light-dark(#eeece1, #403152);
+    --text_dark: light-dark(#403152, #eeece1);
+    --bg_colour:  light-dark(#eeece1, #1e1c11);
+    --font_main: Arial, sans-serif;
+    --light_light_transparent: rgba(240, 232, 236, 0.5);
+    --dark_theme_bg_colour: #1e1c11;
+    color-scheme: light dark;
+ 
+}
+/* body.dark-mode{
     --darker_main_colour: #604a7b; 
     --main_colour: #b3a2c7;
     --lightish_main_colour: #ccc1da;
@@ -11,8 +25,7 @@
     --font_main: Arial, sans-serif;
     --light_light_transparent: rgba(240, 232, 236, 0.5);
     --dark_theme_bg_colour: #1e1c11;
- 
-}
+} */
 
 body{
     background-color: var(--bg_colour);
