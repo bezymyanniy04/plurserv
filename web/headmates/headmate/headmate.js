@@ -93,7 +93,7 @@ async function get_alter() {
         document.getElementById("role").value = data.role;
         document.getElementById("hm_colour").value = colour;
         quill.clipboard.dangerouslyPasteHTML(data.text, `silent`)
-        // document.getElementById("av_change").value = data.avatar
+        document.getElementById("av_change").value = data.avatar
         if (data.fronting){
             document.getElementById("fronting").style.backgroundColor = "magenta"
             document.getElementById("fronting").textContent = "remove from the front"
