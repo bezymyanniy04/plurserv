@@ -18,7 +18,7 @@ const file_input = document.getElementById("file_add")
 file_input.addEventListener('input', ()=>{
     add_avatar()
 })
-document.getElementsByClassName("ql-toolbar")[0].style.display = "block"
+// document.getElementsByClassName("ql-toolbar")[0].style.display = "block"
 let alter_id = sessionStorage.getItem("alter_id")
 // sessionStorage.removeItem("alter_id")
 
@@ -94,7 +94,7 @@ async function get_alter() {
         document.getElementById("role").value = data.role;
         document.getElementById("hm_colour").value = colour;
         quill.clipboard.dangerouslyPasteHTML(data.text, `silent`)
-        document.getElementById("av_change").value = data.avatar
+        // document.getElementById("av_change").value = data.avatar
         if (data.fronting){
             document.getElementById("fronting").style.backgroundColor = "magenta"
             document.getElementById("fronting").textContent = "remove from the front"
