@@ -18,7 +18,7 @@ const file_input = document.getElementById("file_add")
 file_input.addEventListener('input', ()=>{
     add_avatar()
 })
-
+document.getElementsByClassName("ql-toolbar")[0].style.display = "block"
 let alter_id = sessionStorage.getItem("alter_id")
 // sessionStorage.removeItem("alter_id")
 
@@ -93,7 +93,7 @@ async function get_alter() {
         document.getElementById("age").value = data.age;
         document.getElementById("role").value = data.role;
         document.getElementById("hm_colour").value = colour;
-        document.getElementById("description").value = data.description;
+        quill.clipboard.dangerouslyPasteHTML(data.text, `silent`)
         // document.getElementById("av_change").value = data.avatar
         if (data.fronting){
             document.getElementById("fronting").style.backgroundColor = "magenta"
@@ -296,7 +296,7 @@ async function edit_alter() {
         let pronouns = document.getElementById("pronouns").value
         let age = document.getElementById("age").value
         let role = document.getElementById("role").value
-        let description = document.getElementById("description").value
+        let description = quill.getSemanticHTML(0);
         let colour = document.getElementById("hm_colour").value
         
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
@@ -337,7 +337,7 @@ async function edit_alter_new() {
         let pronouns = document.getElementById("pronouns").value
         let age = document.getElementById("age").value
         let role = document.getElementById("role").value
-        let description = document.getElementById("description").value
+        let description = quill.getSemanticHTML(0);
         let colour = document.getElementById("hm_colour").value
         
         let response = await fetch(`${api_link}/alters/${alter_id}`, {
