@@ -1,4 +1,10 @@
 
+let th = localStorage.getItem("theme")
+if (th != null){
+    document.documentElement.style.setProperty('color-scheme', th)
+
+}
+
 window.addEventListener('pageshow', function(event){
     if (event.persisted){
         window.location.reload();

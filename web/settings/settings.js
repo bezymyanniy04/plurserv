@@ -1,4 +1,9 @@
 
+let th = localStorage.getItem("theme")
+if (th != null){
+    document.documentElement.style.setProperty('color-scheme', th)
+
+}
 window.addEventListener('pageshow', function(event){
     if (event.persisted){
         window.location.reload();
@@ -91,6 +96,10 @@ async function get_user_myself() {
        document.getElementById("themeSelect").value = data.theme
        document.getElementById("fontSelect").value = data.font
        document.getElementById("avatar_img").src = data.avatar
+       let theme = data.theme == 0 ? "light" : "dark";
+
+    document.documentElement.style.setProperty('color-scheme', theme)
+    localStorage.setItem("theme", theme)
     }
     catch(error){
         console.error(error);

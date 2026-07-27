@@ -1,3 +1,12 @@
+
+let th = localStorage.getItem("theme")
+if (th != null){
+    document.documentElement.style.setProperty('color-scheme', th)
+
+}
+
+
+
 const env_link = "https://plurserv.fly.dev"
 const api_link = "https://plurserv.fly.dev/api"
 

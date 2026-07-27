@@ -1,4 +1,9 @@
 
+let th = localStorage.getItem("theme")
+if (th != null){
+    document.documentElement.style.setProperty('color-scheme', th)
+
+}
 
 
 window.addEventListener('pageshow', function(event){
@@ -103,6 +108,10 @@ async function get_user_myself() {
         var data = await response.json();
         try1 = 0;
        document.getElementById("systemName").textContent = data.system_name + "!"
+              let theme = data.theme == 0 ? "light" : "dark";
+
+    document.documentElement.style.setProperty('color-scheme', theme)
+    localStorage.setItem("theme", theme)
     }
     catch(error){
         console.error(error);
