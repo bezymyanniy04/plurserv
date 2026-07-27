@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Add headmate</title>
-
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../style.css">
 
 </head>
@@ -26,7 +26,9 @@
     <p>pronouns: </p> <input id="pronouns"><br>
     <p>age: </p> <input id="age"><br>
     <p>role: </p> <input id="role"><br>
-    <p>description: </p> <input id="description"></input><br>
+    <p>description: </p> 
+    <div id="editor">
+            </div>
 
     
     
@@ -34,9 +36,17 @@
     <button id="save" onclick="edit_alter_new()"><h1>Save</h1></button>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <script src='headmate.js'></script> 
     <script>post_alter()</script>
+    <script>
+  const quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
+<script>document.getElementsByClassName("ql-toolbar")[0].style.display = "block"</script>
+</div>
 
 </body>
 
