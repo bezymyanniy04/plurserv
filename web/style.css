@@ -5,9 +5,11 @@
     --main_colour: light-dark(#b3a2c7, #604a7b);
     --lightish_main_colour: #ccc1da;
     --lighter_main_colour: #e6e0ec;
-    --text_light: light-dark(#eeece1, #403152);
-    --text_dark: light-dark(#403152, #eeece1);
+    --text_light: light-dark(#ccc1da, #403152);
+    --text_dark: light-dark(#403152, #ccc1da);
     --bg_colour:  light-dark(#eeece1, #1e1c11);
+    --button_colour: light-dark(#ccc1da, #403152);
+    --button_selected: light-dark(#403152, #ccc1da);
     --font_main: Arial, sans-serif;
     --light_light_transparent: rgba(240, 232, 236, 0.5);
     --dark_theme_bg_colour: #1e1c11;
@@ -72,7 +74,7 @@ img{
 }
 
 #btn_submit{
-    color: var(--text_light);
+    color: var(--bg_colour);
     background-color: transparent;
     font-size: 3rem;
     border: none;
@@ -314,10 +316,13 @@ input:focus{
     width: 45%;
     
     color: var(--text_dark);
-    background-color: var(--lightish_main_colour);
+    background-color: var(--button_colour);
    
 }
-
+.menu_button:hover{
+     background-color: var(--button_selected);
+     color: var(--text_light);
+}
 
 
 .corn{
@@ -338,10 +343,7 @@ input:focus{
     align-items: center;
 }
 
-.menu_button:hover{
-     background-color: var(--text_dark);
-     color: var(--lighter_main_colour);
-}
+
 
 #diaries_list{
     flex-direction: column;
